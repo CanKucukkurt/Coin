@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI_Generic_TickIcon_0: 1292783556526870311
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
