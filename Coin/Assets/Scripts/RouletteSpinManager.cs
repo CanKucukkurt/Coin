@@ -13,6 +13,8 @@ public class RouletteSpinManager : MonoBehaviour
     private int currentHighlightedIndex = -1;
 
     public bool isSpinningPublic => isSpinning;
+    [SerializeField] private WalletManager walletManager;
+    [SerializeField] private ItemAnimation burstAnimator;
 
     void Start()
     {
@@ -24,17 +26,17 @@ public class RouletteSpinManager : MonoBehaviour
 
     IEnumerator SpinSequence()
     {
-        int targetSlotIndex = Random.Range(0, allSlots.Length);
         int totalSpins = (int)(minimumSpins + Random.Range(0, maxExtraSpins));
-        int slotsToAdd = (targetSlotIndex - (totalSpins % allSlots.Length) + allSlots.Length) % allSlots.Length;
-        totalSpins += slotsToAdd;
-
-        yield return StartCoroutine(AnimateSpin(totalSpins, targetSlotIndex));
+        yield return StartCoroutine(AnimateSpin(totalSpins));
+        yield return StartCoroutine(FlashLandedSlot());
+        walletManager.AddFood(allSlots[currentHighlightedIndex].AssignedFood);
+        walletManager.AddFood(allSlots[currentHighlightedIndex].AssignedFood);
+        burstAnimator.PlayBurstAnimation(allSlots[currentHighlightedIndex].AssignedFood, allSlots[currentHighlightedIndex].transform);
         isSpinning = false;
-        Debug.Log($"Landed on slot: {allSlots[targetSlotIndex].name}");
+        Debug.Log($"Landed on slot: {allSlots[currentHighlightedIndex].name}  Item: {allSlots[currentHighlightedIndex].AssignedFood.itemName}");
     }
 
-    IEnumerator AnimateSpin(int totalSpins, int targetSlotIndex)
+    IEnumerator AnimateSpin(int totalSpins)
     {
         float spinSpeed = baseSpinSpeed;
         for (int i = 0; i < totalSpins; i++)
@@ -45,14 +47,23 @@ public class RouletteSpinManager : MonoBehaviour
             currentHighlightedIndex = (currentHighlightedIndex + 1) % allSlots.Length;
             allSlots[currentHighlightedIndex].SetHighlighted(true);
 
-            // Gradually slow down
             if (i > totalSpins * 0.7f)
                 spinSpeed += baseSpinSpeed * 0.1f;
 
             yield return new WaitForSeconds(spinSpeed);
         }
+    }
 
-        allSlots[currentHighlightedIndex].SetHighlighted(true);
+    IEnumerator FlashLandedSlot()
+    {
+        RouletteSlot landedSlot = allSlots[currentHighlightedIndex];
+        for (int i = 0; i < 6; i++)
+        {
+            landedSlot.SetHighlighted(false);
+            yield return new WaitForSeconds(0.05f);
+            landedSlot.SetHighlighted(true);
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 
     void TestSpin()
@@ -67,5 +78,14 @@ public class RouletteSpinManager : MonoBehaviour
     void Update()
     {
         TestSpin();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            var collectedFoods = walletManager.GetAllFoods();
+            Debug.Log($"Wallet contains {collectedFoods.Count} items:");
+            foreach (var food in collectedFoods)
+            {
+                Debug.Log($"- {food.itemName}");
+            }
+        }
     }
 }

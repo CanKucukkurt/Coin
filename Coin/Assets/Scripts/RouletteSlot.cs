@@ -6,8 +6,11 @@ public class RouletteSlot : MonoBehaviour
     [SerializeField] private Sprite normalSlotSprite;
     [SerializeField] private Sprite highlightedSlotSprite;
     [SerializeField] private Sprite disabledSlotSprite;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    private UnityEngine.UI.Image slotImage;
+    [SerializeField] private UnityEngine.UI.Image foodIcon;
     [SerializeField] private int slotIndex;
+    private FoodItem assignedFood;
+
 
     public bool isHighlighted = false;
     public bool isDisabled = false;
@@ -15,11 +18,14 @@ public class RouletteSlot : MonoBehaviour
     public int SlotIndex => slotIndex;
     public bool IsHighlighted => isHighlighted;
     public bool IsDisabled => isDisabled;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public FoodItem AssignedFood => assignedFood;
+
+
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = normalSlotSprite;
+        slotImage = GetComponent<UnityEngine.UI.Image>();
+        slotImage.sprite = normalSlotSprite;
     }
 
     public void SetSlotIndex(int index)
@@ -31,7 +37,7 @@ public class RouletteSlot : MonoBehaviour
     {
         if (isDisabled) return;
         isHighlighted = highlighted;
-        spriteRenderer.sprite = highlighted ? highlightedSlotSprite : normalSlotSprite;
+        slotImage.sprite = highlighted ? highlightedSlotSprite : normalSlotSprite;
     }
 
     public void SetDisabled(bool disabled)
@@ -39,11 +45,23 @@ public class RouletteSlot : MonoBehaviour
         isDisabled = disabled;
         if (isDisabled)
         {
-            spriteRenderer.sprite = disabledSlotSprite;
+            slotImage.sprite = disabledSlotSprite;
         }
         else
         {
-            spriteRenderer.sprite = isHighlighted ? highlightedSlotSprite : normalSlotSprite;
+            slotImage.sprite = isHighlighted ? highlightedSlotSprite : normalSlotSprite;
+        }
+    }
+
+
+    public void AssignFood(FoodItem food)
+    {
+        assignedFood = food;
+
+        if (foodIcon != null && food != null)
+        {
+            foodIcon.sprite = food.itemSprite;
+            foodIcon.gameObject.SetActive(true);
         }
     }
 }
