@@ -1,15 +1,24 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using DG.Tweening;
 
 public class RouletteSlot : MonoBehaviour
 {
     [SerializeField] private Sprite normalSlotSprite;
     [SerializeField] private Sprite highlightedSlotSprite;
     [SerializeField] private Sprite disabledSlotSprite;
+    [SerializeField] private Sprite winSlotSprite;
     private UnityEngine.UI.Image slotImage;
     [SerializeField] private UnityEngine.UI.Image foodIcon;
+    [SerializeField] private UnityEngine.UI.Image tickIcon;
+
     [SerializeField] private int slotIndex;
-    private FoodItem assignedFood;
+    [SerializeField] private FoodItem assignedFood;
+    [SerializeField] private int rewardAmount = 1;
+    [SerializeField] private int visualAmount = 4;
+    [SerializeField] private float tickSeconds = 0.5f;
+
+
 
 
     public bool isHighlighted = false;
@@ -21,11 +30,16 @@ public class RouletteSlot : MonoBehaviour
 
     public FoodItem AssignedFood => assignedFood;
 
+    public int RewardAmount => rewardAmount;
+    public int VisualAmount => visualAmount;
 
     void Start()
     {
+        tickIcon.gameObject.SetActive(false);
+        tickIcon.fillAmount = 0f;
         slotImage = GetComponent<UnityEngine.UI.Image>();
         slotImage.sprite = normalSlotSprite;
+        AssignFood(assignedFood);
     }
 
     public void SetSlotIndex(int index)
@@ -35,9 +49,9 @@ public class RouletteSlot : MonoBehaviour
 
     public void SetHighlighted(bool highlighted)
     {
-        if (isDisabled) return;
         isHighlighted = highlighted;
-        slotImage.sprite = highlighted ? highlightedSlotSprite : normalSlotSprite;
+        if (isDisabled) slotImage.sprite = highlighted ? highlightedSlotSprite : disabledSlotSprite;
+        else slotImage.sprite = highlighted ? highlightedSlotSprite : normalSlotSprite;
     }
 
     public void SetDisabled(bool disabled)
@@ -53,6 +67,30 @@ public class RouletteSlot : MonoBehaviour
         }
     }
 
+    public void SetWin()
+    {
+        slotImage.sprite = winSlotSprite;
+    }
+
+
+    public void AnimateTickIcon()
+    {
+        if (tickIcon != null)
+        {
+            tickIcon.gameObject.SetActive(true);
+            tickIcon.fillAmount = 0f;
+            tickIcon.DOFillAmount(1f, 0.3f).SetEase(Ease.OutQuad);
+        }
+    }
+
+    public void HideTickIcon()
+    {
+        if (tickIcon != null)
+        {
+            tickIcon.gameObject.SetActive(false);
+            tickIcon.fillAmount = 0f;
+        }
+    }
 
     public void AssignFood(FoodItem food)
     {

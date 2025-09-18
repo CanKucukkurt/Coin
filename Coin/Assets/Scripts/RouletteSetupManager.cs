@@ -9,10 +9,10 @@ public class RouletteSetupManager : MonoBehaviour
 
     void Start()
     {
-        SetupRoulette();
+        // SetupRandomRoulette();
     }
 
-    void SetupRoulette()
+    void SetupRandomRoulette()
     {
         allSlots = slotsParent.GetComponentsInChildren<RouletteSlot>();
 

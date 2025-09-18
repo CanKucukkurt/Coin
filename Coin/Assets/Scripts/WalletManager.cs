@@ -3,30 +3,43 @@ using UnityEngine;
 
 public class WalletManager : MonoBehaviour
 {
-    private List<FoodItem> collectedFoods = new List<FoodItem>();
+    private Dictionary<FoodItem, int> collectedFoods = new Dictionary<FoodItem, int>();
 
-    public void AddFood(FoodItem food)
+    public void AddFood(FoodItem food, int amount)
     {
-        if (food != null)
+        if (collectedFoods.ContainsKey(food))
         {
-            collectedFoods.Add(food);
-            Debug.Log($"Added {food.itemName} to wallet.");
+            collectedFoods[food] += amount;
         }
+        else
+        {
+            collectedFoods[food] = amount;
+        }
+        Debug.Log($"Added {amount} {food.itemName} to wallet. Total: {collectedFoods[food]}");
     }
 
     public bool HasFood(FoodItem food)
     {
-        return collectedFoods.Contains(food);
+        return collectedFoods.ContainsKey(food);
     }
 
-    public int GetFoodCount()
+    public int GetFoodCount(FoodItem food)
     {
-        return collectedFoods.Count;
+        return collectedFoods.ContainsKey(food) ? collectedFoods[food] : 0;
     }
 
-    public List<FoodItem> GetAllFoods()
+    public int GetTotalItems()
     {
-        return new List<FoodItem>(collectedFoods);
+        int total = 0;
+        foreach (var amount in collectedFoods.Values)
+        {
+            total += amount;
+        }
+        return total;
     }
 
+    public Dictionary<FoodItem, int> GetAllFoods()
+    {
+        return new Dictionary<FoodItem, int>(collectedFoods);
+    }
 }
