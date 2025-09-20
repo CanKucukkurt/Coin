@@ -1,11 +1,11 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RouletteSpinManager : MonoBehaviour
 {
     [SerializeField] private Transform slotsParent;
-    [SerializeField] private float baseSpinSpeed = 0.1f;
+    [SerializeField] private float regularSpinSpeed = 0.1f;
+    [SerializeField] private float slowSpinSpeed = 0.3f;
     [SerializeField] private float minimumSpins = 20;
     [SerializeField] private float maxExtraSpins = 10;
     [SerializeField] private float winSeconds = 0.5f;
@@ -26,7 +26,6 @@ public class RouletteSpinManager : MonoBehaviour
         Debug.Log($"Found {allSlots.Length} slots.");
     }
 
-
     IEnumerator SpinSequence()
     {
         spinButton.HideButton();
@@ -45,11 +44,17 @@ public class RouletteSpinManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         spinButton.ShowButton();
         Debug.Log($"Landed on slot: {allSlots[currentHighlightedIndex].name}  Item: {allSlots[currentHighlightedIndex].AssignedFood.itemName}");
+
+        if (AreAllSlotsDisabled())
+        {
+            Debug.Log("All slots are disabled. Resetting slots.");
+            yield return new WaitForSeconds(1f);
+            GameSceneManager.Instance.LoadMainMenu();
+        }
     }
 
     IEnumerator AnimateSpin(int totalSpins)
     {
-        float spinSpeed = baseSpinSpeed;
         for (int i = 0; i < totalSpins; i++)
         {
             if (currentHighlightedIndex >= 0)
@@ -58,12 +63,13 @@ public class RouletteSpinManager : MonoBehaviour
             currentHighlightedIndex = (currentHighlightedIndex + 1) % allSlots.Length;
             allSlots[currentHighlightedIndex].SetHighlighted(true);
 
-            if (i > totalSpins * 0.7f)
-                spinSpeed += baseSpinSpeed * 0.1f;
+            // Use slow speed for last 3 spins, regular speed otherwise
+            float spinSpeed = (i >= totalSpins - 3) ? slowSpinSpeed : regularSpinSpeed;
 
             yield return new WaitForSeconds(spinSpeed);
         }
 
+        // Continue spinning until we land on a non-disabled slot
         while (allSlots[currentHighlightedIndex].IsDisabled)
         {
             if (currentHighlightedIndex >= 0)
@@ -72,7 +78,7 @@ public class RouletteSpinManager : MonoBehaviour
             currentHighlightedIndex = (currentHighlightedIndex + 1) % allSlots.Length;
             allSlots[currentHighlightedIndex].SetHighlighted(true);
 
-            yield return new WaitForSeconds(spinSpeed);
+            yield return new WaitForSeconds(slowSpinSpeed);
         }
     }
 
@@ -82,9 +88,9 @@ public class RouletteSpinManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             landedSlot.SetHighlighted(false);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.08f);
             landedSlot.SetHighlighted(true);
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.08f);
         }
 
         landedSlot.SetWin();
@@ -100,16 +106,23 @@ public class RouletteSpinManager : MonoBehaviour
         }
     }
 
+    public bool AreAllSlotsDisabled()
+    {
+        foreach (var slot in allSlots)
+        {
+            if (!slot.IsDisabled)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            var collectedFoods = walletManager.GetAllFoods();
-            Debug.Log($"Wallet contains {collectedFoods.Count} items:");
-            foreach (var food in collectedFoods)
-            {
-                Debug.Log($"- {food.Key}: {food.Value}");
-            }
+            walletManager.ClearWallet();
         }
     }
 }

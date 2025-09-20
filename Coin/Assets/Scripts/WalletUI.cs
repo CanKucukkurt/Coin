@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
+using NUnit.Framework;
 
 public class WalletUI : MonoBehaviour
 {
@@ -10,6 +12,13 @@ public class WalletUI : MonoBehaviour
     [SerializeField] private GameObject walletPanel;
     [SerializeField] private Transform foodListContainer;
     [SerializeField] private GameObject foodItemDisplayPrefab;
+
+    [SerializeField] private float animationDuration = 0.3f;
+    [SerializeField] private Vector2 panelOffset = new Vector2(0, -100f);
+    [SerializeField] private Ease openAnimationEase = Ease.OutQuad;
+    [SerializeField] private Ease closeAnimationEase = Ease.InQuad;
+
+    private bool isAnimating = false;
 
     [Header("Dependencies")]
     [SerializeField] private WalletManager walletManager;
@@ -32,24 +41,61 @@ public class WalletUI : MonoBehaviour
         isPanelOpen = false;
     }
 
-    void Update()
+    public void ToggleWallet()
     {
-        // Refresh UI when panel is open (to catch new items from roulette spins)
+        if (isAnimating) return;
         if (isPanelOpen)
         {
-            RefreshWalletDisplay();
+            CloseWallet();
+        }
+        else
+        {
+            OpenWallet();
         }
     }
 
-    public void ToggleWallet()
+    public void OpenWallet()
     {
-        isPanelOpen = !isPanelOpen;
-        walletPanel?.SetActive(isPanelOpen);
+        if (isPanelOpen || isAnimating) return;
 
-        if (isPanelOpen)
+        isAnimating = true;
+        isPanelOpen = true;
+
+        RectTransform panelRect = walletPanel.GetComponent<RectTransform>();
+        RectTransform buttonRect = walletBagButton.GetComponent<RectTransform>();
+
+        walletPanel.SetActive(true);
+        panelRect.anchoredPosition = buttonRect.anchoredPosition;
+        panelRect.localScale = Vector3.zero;
+
+        Sequence openSequence = DOTween.Sequence();
+        openSequence.Append(panelRect.DOAnchorPos(panelOffset, animationDuration).SetEase(openAnimationEase));
+        openSequence.Join(panelRect.DOScale(new Vector3(7, 10, 1), animationDuration).SetEase(openAnimationEase));
+        openSequence.OnComplete(() =>
         {
-            RefreshWalletDisplay();
-        }
+            isAnimating = false;
+        });
+    }
+
+    public void CloseWallet()
+    {
+        if (!isPanelOpen || isAnimating) return;
+
+        isAnimating = true;
+        isPanelOpen = false;
+
+        // Animate back to wallet button position and scale down
+        RectTransform panelRect = walletPanel.GetComponent<RectTransform>();
+        Vector3 buttonPosition = walletBagButton.GetComponent<RectTransform>().anchoredPosition;
+
+        Sequence closeSequence = DOTween.Sequence();
+        closeSequence.Append(panelRect.DOAnchorPos(buttonPosition, animationDuration).SetEase(closeAnimationEase));
+        closeSequence.Join(panelRect.DOScale(Vector3.zero, animationDuration).SetEase(closeAnimationEase));
+        closeSequence.OnComplete(() =>
+        {
+            walletPanel.SetActive(false);
+            isAnimating = false;
+        });
     }
 
     public void RefreshWalletDisplay()

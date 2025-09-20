@@ -406,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Free
+  m_text: Spin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -589,8 +589,8 @@ RectTransform:
   - {fileID: 1801107204}
   - {fileID: 1885087229}
   - {fileID: 541184313}
-  - {fileID: 107479399}
   - {fileID: 1691110923}
+  - {fileID: 107479399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 541184316}
   - component: {fileID: 541184318}
   m_Layer: 5
-  m_Name: Bag
+  m_Name: Wallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,6 +830,10 @@ MonoBehaviour:
   walletPanel: {fileID: 1691110922}
   foodListContainer: {fileID: 963867118}
   foodItemDisplayPrefab: {fileID: 7216063051116355433, guid: a3d540ae1bbc376478c8fe19b5df1aeb, type: 3}
+  animationDuration: 0.3
+  panelOffset: {x: 0, y: -130}
+  openAnimationEase: 6
+  closeAnimationEase: 5
   walletManager: {fileID: 541184318}
 --- !u!114 &541184318
 MonoBehaviour:
@@ -843,6 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34056560cfda06747a6a3a8e04c18591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walletUI: {fileID: 541184317}
 --- !u!1 &824654131
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,8 +956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.5600014, y: -1.7939987}
-  m_SizeDelta: {x: -19, y: -3.588}
+  m_AnchoredPosition: {x: 0.4499817, y: -1.7940063}
+  m_SizeDelta: {x: -18.77, y: -3.588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963867119
 MonoBehaviour:
@@ -974,8 +979,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 10, y: 10}
-  m_Spacing: {x: 6.7, y: 4}
+  m_CellSize: {x: 13, y: 10}
+  m_Spacing: {x: 9, y: 4}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1001 &975435301
@@ -1742,13 +1747,14 @@ GameObject:
   - component: {fileID: 1691110923}
   - component: {fileID: 1691110925}
   - component: {fileID: 1691110924}
+  - component: {fileID: 1691110926}
   m_Layer: 5
   m_Name: WalletPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1691110923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1756,9 +1762,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691110922}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.9806404, y: 10.061939, z: 5.8172}
+  m_LocalScale: {x: 7, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963867118}
@@ -1766,7 +1772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -133.96}
+  m_AnchoredPosition: {x: -0.000015258789, y: -133.96002}
   m_SizeDelta: {x: 100, y: 106.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691110924
@@ -1807,6 +1813,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691110922}
   m_CullTransparentMesh: 1
+--- !u!95 &1691110926
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691110922}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1781898116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2278,8 +2306,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1885087229}
   - component: {fileID: 1885087230}
-  - component: {fileID: 1885087231}
   - component: {fileID: 1885087233}
+  - component: {fileID: 1885087234}
   m_Layer: 0
   m_Name: Slots
   m_TagString: Untagged
@@ -2329,41 +2357,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotsParent: {fileID: 1885087229}
-  baseSpinSpeed: 0.05
+  regularSpinSpeed: 0.07
+  slowSpinSpeed: 0.25
   minimumSpins: 20
   maxExtraSpins: 10
   winSeconds: 1
   walletManager: {fileID: 541184318}
   burstAnimator: {fileID: 1885087233}
   spinButton: {fileID: 1801107208}
---- !u!114 &1885087231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885087227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b3e9e635bc81f47b506cc68b98422f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availableFoodItems:
-  - {fileID: 11400000, guid: a98b80d143af6314c8b585e7791a0ab3, type: 2}
-  - {fileID: 11400000, guid: cce215bb2692e7c4d8f6f7989447473c, type: 2}
-  - {fileID: 11400000, guid: 386984661ada89746b3697cf6966f03f, type: 2}
-  - {fileID: 11400000, guid: 54baaa625af61d547b0eb5618ebe01c1, type: 2}
-  - {fileID: 11400000, guid: 28fbc3a99d2eb864b82642101ae402b2, type: 2}
-  - {fileID: 11400000, guid: 5500c3906cd6dc84b85ead029d71f704, type: 2}
-  - {fileID: 11400000, guid: b3140fc6532ba634cbdb0d7f9ff3d40d, type: 2}
-  - {fileID: 11400000, guid: 12e7387dd220a3f45b78002291c8473a, type: 2}
-  - {fileID: 11400000, guid: 1b4a6f929c78ae44d8b6dd6268862de3, type: 2}
-  - {fileID: 11400000, guid: e501d31df681e324583f8c949720c4e0, type: 2}
-  - {fileID: 11400000, guid: f48a5050e38f6474f94b48c369e4d3b9, type: 2}
-  - {fileID: 11400000, guid: 087c4355254052d4b840e4830d2ae278, type: 2}
-  - {fileID: 11400000, guid: 9701a2d1122067746b091e1458a75406, type: 2}
-  - {fileID: 11400000, guid: f86141721acf1094398c10a9750893c3, type: 2}
-  slotsParent: {fileID: 1885087229}
 --- !u!114 &1885087233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,11 +2379,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backpackTarget: {fileID: 541184313}
   uiCanvas: {fileID: 517075220}
-  burstCount: 4
-  burstRadius: 1
+  burstRadius: 0.8
   burstDuration: 0.5
   flyDuration: 0.3
   delayBetweenItems: 0.1
+--- !u!114 &1885087234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885087227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69366c2bb374a55459fd41d9d8215b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuSceneName: MainMenu
+  rouletteSceneName: RouletteScene
 --- !u!1 &1914740183
 GameObject:
   m_ObjectHideFlags: 0

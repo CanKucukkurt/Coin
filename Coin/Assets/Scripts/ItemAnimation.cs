@@ -6,7 +6,6 @@ public class ItemAnimation : MonoBehaviour
 {
     [SerializeField] private Transform backpackTarget;
     [SerializeField] private Canvas uiCanvas;
-    [SerializeField] private int burstCount = 4;
     [SerializeField] private float burstRadius = 150f;
     [SerializeField] private float burstDuration = 0.5f;
     [SerializeField] private float flyDuration = 1f;

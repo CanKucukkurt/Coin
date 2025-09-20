@@ -4,19 +4,17 @@ using DG.Tweening;
 
 public class RouletteSlot : MonoBehaviour
 {
-    [SerializeField] private Sprite normalSlotSprite;
-    [SerializeField] private Sprite highlightedSlotSprite;
-    [SerializeField] private Sprite disabledSlotSprite;
-    [SerializeField] private Sprite winSlotSprite;
     private UnityEngine.UI.Image slotImage;
     [SerializeField] private UnityEngine.UI.Image foodIcon;
     [SerializeField] private UnityEngine.UI.Image tickIcon;
 
     [SerializeField] private int slotIndex;
     [SerializeField] private FoodItem assignedFood;
+
+    [SerializeField] private SlotConfiguration slotConfig;
     [SerializeField] private int rewardAmount = 1;
     [SerializeField] private int visualAmount = 4;
-    [SerializeField] private float tickSeconds = 0.5f;
+    [SerializeField] private TMPro.TextMeshProUGUI rewardAmountText;
 
 
 
@@ -38,8 +36,9 @@ public class RouletteSlot : MonoBehaviour
         tickIcon.gameObject.SetActive(false);
         tickIcon.fillAmount = 0f;
         slotImage = GetComponent<UnityEngine.UI.Image>();
-        slotImage.sprite = normalSlotSprite;
+        slotImage.sprite = slotConfig.normalSlotSprite;
         AssignFood(assignedFood);
+        UpdateRewardAmountDisplay();
     }
 
     public void SetSlotIndex(int index)
@@ -50,8 +49,8 @@ public class RouletteSlot : MonoBehaviour
     public void SetHighlighted(bool highlighted)
     {
         isHighlighted = highlighted;
-        if (isDisabled) slotImage.sprite = highlighted ? highlightedSlotSprite : disabledSlotSprite;
-        else slotImage.sprite = highlighted ? highlightedSlotSprite : normalSlotSprite;
+        if (isDisabled) slotImage.sprite = highlighted ? slotConfig.highlightedSlotSprite : slotConfig.disabledSlotSprite;
+        else slotImage.sprite = highlighted ? slotConfig.highlightedSlotSprite : slotConfig.normalSlotSprite;
     }
 
     public void SetDisabled(bool disabled)
@@ -59,17 +58,17 @@ public class RouletteSlot : MonoBehaviour
         isDisabled = disabled;
         if (isDisabled)
         {
-            slotImage.sprite = disabledSlotSprite;
+            slotImage.sprite = slotConfig.disabledSlotSprite;
         }
         else
         {
-            slotImage.sprite = isHighlighted ? highlightedSlotSprite : normalSlotSprite;
+            slotImage.sprite = isHighlighted ? slotConfig.highlightedSlotSprite : slotConfig.normalSlotSprite;
         }
     }
 
     public void SetWin()
     {
-        slotImage.sprite = winSlotSprite;
+        slotImage.sprite = slotConfig.winSlotSprite;
     }
 
 
@@ -79,7 +78,7 @@ public class RouletteSlot : MonoBehaviour
         {
             tickIcon.gameObject.SetActive(true);
             tickIcon.fillAmount = 0f;
-            tickIcon.DOFillAmount(1f, 0.3f).SetEase(Ease.OutQuad);
+            tickIcon.DOFillAmount(1f, slotConfig.tickSeconds).SetEase(Ease.OutQuad);
         }
     }
 
@@ -100,6 +99,14 @@ public class RouletteSlot : MonoBehaviour
         {
             foodIcon.sprite = food.itemSprite;
             foodIcon.gameObject.SetActive(true);
+        }
+    }
+
+    private void UpdateRewardAmountDisplay()
+    {
+        if (rewardAmountText != null && rewardAmount > 1)
+        {
+            rewardAmountText.text = rewardAmount.ToString();
         }
     }
 }
