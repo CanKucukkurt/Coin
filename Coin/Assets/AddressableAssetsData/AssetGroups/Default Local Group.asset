@@ -14,77 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 8881f32b561afdf4aac177a42dac8351
-  m_SerializeEntries:
-  - m_GUID: 087c4355254052d4b840e4830d2ae278
-    m_Address: FoodItems/Noodle
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 12e7387dd220a3f45b78002291c8473a
-    m_Address: FoodItems/God-Food
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1b4a6f929c78ae44d8b6dd6268862de3
-    m_Address: FoodItems/Hot-Chocolate
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 28fbc3a99d2eb864b82642101ae402b2
-    m_Address: FoodItems/Donut
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 386984661ada89746b3697cf6966f03f
-    m_Address: FoodItems/Coconut
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 54baaa625af61d547b0eb5618ebe01c1
-    m_Address: FoodItems/Croissant
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5500c3906cd6dc84b85ead029d71f704
-    m_Address: FoodItems/Egg
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9701a2d1122067746b091e1458a75406
-    m_Address: FoodItems/Pineapple
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a98b80d143af6314c8b585e7791a0ab3
-    m_Address: FoodItems/Beer
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b3140fc6532ba634cbdb0d7f9ff3d40d
-    m_Address: FoodItems/Fig
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cce215bb2692e7c4d8f6f7989447473c
-    m_Address: FoodItems/Candy
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e501d31df681e324583f8c949720c4e0
-    m_Address: FoodItems/Hot-Dog
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f48a5050e38f6474f94b48c369e4d3b9
-    m_Address: FoodItems/Mushroom
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f86141721acf1094398c10a9750893c3
-    m_Address: FoodItems/Shrimp
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8821fc09d766f1649a3764f316abc7fa, type: 2}
   m_SchemaSet:

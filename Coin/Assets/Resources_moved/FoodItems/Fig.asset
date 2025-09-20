@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Fig
   itemID: fig
-  itemSprite: {fileID: -1934220362459914066, guid: 84e1d57a92068e242ae3955b191aca74, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 84e1d57a92068e242ae3955b191aca74
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

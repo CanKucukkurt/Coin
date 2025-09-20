@@ -62,11 +62,12 @@ public class WalletManager : MonoBehaviour
         Debug.Log("Wallet saved to PlayerPrefs.");
     }
 
-    public void LoadWalletFromPlayerPrefs()
+    public async void LoadWalletFromPlayerPrefs()
     {
         collectedFoods.Clear();
-        // Assuming you have a predefined list of all possible FoodItems in the game
-        FoodItem[] allFoodItems = Resources.LoadAll<FoodItem>("FoodItems");
+
+        var allFoodItems = await FoodItemManager.Instance.LoadAllFoodItemsAsync();
+
         foreach (var food in allFoodItems)
         {
             int amount = PlayerPrefs.GetInt(food.itemName, 0);
@@ -75,16 +76,16 @@ public class WalletManager : MonoBehaviour
                 collectedFoods[food] = amount;
             }
         }
-        Debug.Log("Wallet loaded from PlayerPrefs.");
+        Debug.Log("Wallet loaded from PlayerPrefs using Addressables.");
         walletUI.RefreshWalletDisplay();
     }
 
-    public void ClearWallet()
+
+    public async void ClearWallet()
     {
         collectedFoods.Clear();
 
-        // Clear from PlayerPrefs too
-        FoodItem[] allFoodItems = Resources.LoadAll<FoodItem>("FoodItems");
+        var allFoodItems = await FoodItemManager.Instance.LoadAllFoodItemsAsync();
         foreach (var food in allFoodItems)
         {
             PlayerPrefs.DeleteKey(food.itemName);

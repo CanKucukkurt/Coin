@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0089e77d6a67234cbddede40c5e8c7d, type: 3}
-  m_Name: Donut
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: FoodSprites_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  itemName: Donut
-  itemID: donut
-  itemSpriteReference:
-    m_AssetGUID: 480be33c91f8c6c42a76e62cc9a2c523
-    m_SubObjectName: 
-    m_SubObjectGUID: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  m_Group: {fileID: 11400000, guid: 1864ad446280289498ccc01ad5477c5a, type: 2}
+  m_StaticContent: 0

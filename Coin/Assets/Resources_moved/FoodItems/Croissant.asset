@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Croissant
   itemID: croissant
-  itemSprite: {fileID: 8689319978456130346, guid: 1c58a1e41f252f54cbafc5e854df0905, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 1c58a1e41f252f54cbafc5e854df0905
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

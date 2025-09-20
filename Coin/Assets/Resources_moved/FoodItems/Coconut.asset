@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Coconut
   itemID: coconut
-  itemSprite: {fileID: 3415579226381933368, guid: 7634fdad7a24a4c48bdc3707e92969e1, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 7634fdad7a24a4c48bdc3707e92969e1
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

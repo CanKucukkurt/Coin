@@ -42,7 +42,6 @@ public class RouletteSpinManager : MonoBehaviour
         allSlots[currentHighlightedIndex].SetDisabled(true);
         isSpinning = false;
         yield return new WaitForSeconds(0.1f);
-        spinButton.ShowButton();
         Debug.Log($"Landed on slot: {allSlots[currentHighlightedIndex].name}  Item: {allSlots[currentHighlightedIndex].AssignedFood.itemName}");
 
         if (AreAllSlotsDisabled())
@@ -50,6 +49,10 @@ public class RouletteSpinManager : MonoBehaviour
             Debug.Log("All slots are disabled. Resetting slots.");
             yield return new WaitForSeconds(1f);
             GameSceneManager.Instance.LoadMainMenu();
+        }
+        else
+        {
+            spinButton.ShowButton();
         }
     }
 

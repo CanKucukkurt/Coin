@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Mushroom
   itemID: mushroom
-  itemSprite: {fileID: 4315506946141470425, guid: 01b41db81568d4c4787a59ca1ff0cbcf, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 01b41db81568d4c4787a59ca1ff0cbcf
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

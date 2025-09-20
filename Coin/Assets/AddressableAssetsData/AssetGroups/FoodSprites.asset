@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: FoodSprites
+  m_EditorClassIdentifier: 
+  m_GroupName: FoodSprites
+  m_GUID: e14e4844d47d37947b01392c86db6efb
+  m_SerializeEntries:
+  - m_GUID: 00334c5305bacce42b1fe1a6244390cf
+    m_Address: Assets/Sprites/Assets/Rewards/Noodle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 01b41db81568d4c4787a59ca1ff0cbcf
+    m_Address: Assets/Sprites/Assets/Rewards/Mushroom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15fb351abb419fe47a0545e32ce786d0
+    m_Address: Assets/Sprites/Assets/Rewards/Egg.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c58a1e41f252f54cbafc5e854df0905
+    m_Address: Assets/Sprites/Assets/Rewards/Croissant.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 480be33c91f8c6c42a76e62cc9a2c523
+    m_Address: Assets/Sprites/Assets/Rewards/Donut.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50e5021999c9ebf4d9a290c9b0ebcc06
+    m_Address: Assets/Sprites/Assets/Rewards/Hot-Chocolate.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 657b1686ef739e94083e1fc1d6f141fc
+    m_Address: Assets/Sprites/Assets/Rewards/Candy.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72b26cde3817a1e45b720bedabd0850e
+    m_Address: Assets/Sprites/Assets/Rewards/Pineapple.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7634fdad7a24a4c48bdc3707e92969e1
+    m_Address: Assets/Sprites/Assets/Rewards/Coconut.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84e1d57a92068e242ae3955b191aca74
+    m_Address: Assets/Sprites/Assets/Rewards/Fig.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c711c1df8f32cc24baa77e2240af1987
+    m_Address: Assets/Sprites/Assets/Rewards/Shrimp.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ced101a77880cf14786e1a75853a828c
+    m_Address: Assets/Sprites/Assets/Rewards/Hot-Dog.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7410dc53b8f659498d6748ba070d226
+    m_Address: Assets/Sprites/Assets/Rewards/God-Food.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec3661395f4461846b094ac667f71f26
+    m_Address: Assets/Sprites/Assets/Rewards/Beer.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8821fc09d766f1649a3764f316abc7fa, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2dd1e3a42af7d0d498092513063c337d, type: 2}
+    - {fileID: 11400000, guid: 65275c8af9ff4c143a2b8c8b73785477, type: 2}

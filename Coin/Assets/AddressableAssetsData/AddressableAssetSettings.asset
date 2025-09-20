@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 8881f32b561afdf4aac177a42dac8351
   m_currentHash:
     serializedVersion: 2
-    Hash: 955685d707cbf56d50d1d5f2950a7fee
+    Hash: 4402bbf3ab3e0cb59cab458e709801ef
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 0e3b7f5d7f8f86544bf3ee14ae3467f8, type: 2}
   - {fileID: 11400000, guid: 35279c3259dc29c4aae3b3e11f3169f3, type: 2}
+  - {fileID: 11400000, guid: 1864ad446280289498ccc01ad5477c5a, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - FoodItems
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 508c64b893c1662438bbc06ffa3f8e83, type: 2}

@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Pineapple
   itemID: pineapple
-  itemSprite: {fileID: 837517196756356485, guid: 72b26cde3817a1e45b720bedabd0850e, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 72b26cde3817a1e45b720bedabd0850e
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

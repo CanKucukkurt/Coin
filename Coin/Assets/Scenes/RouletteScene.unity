@@ -1747,7 +1747,6 @@ GameObject:
   - component: {fileID: 1691110923}
   - component: {fileID: 1691110925}
   - component: {fileID: 1691110924}
-  - component: {fileID: 1691110926}
   m_Layer: 5
   m_Name: WalletPanel
   m_TagString: Untagged
@@ -1813,28 +1812,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691110922}
   m_CullTransparentMesh: 1
---- !u!95 &1691110926
-Animator:
-  serializedVersion: 7
+--- !u!1 &1745852510
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691110922}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1745852513}
+  - component: {fileID: 1745852512}
+  - component: {fileID: 1745852511}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1745852511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745852510}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69366c2bb374a55459fd41d9d8215b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuSceneName: MainMenu
+  rouletteSceneName: RouletteScene
+--- !u!114 &1745852512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745852510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871a8e4ad135694989b54f77907d3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1745852513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745852510}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 326, y: 579.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1781898116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2307,7 +2343,6 @@ GameObject:
   - component: {fileID: 1885087229}
   - component: {fileID: 1885087230}
   - component: {fileID: 1885087233}
-  - component: {fileID: 1885087234}
   m_Layer: 0
   m_Name: Slots
   m_TagString: Untagged
@@ -2359,8 +2394,8 @@ MonoBehaviour:
   slotsParent: {fileID: 1885087229}
   regularSpinSpeed: 0.07
   slowSpinSpeed: 0.25
-  minimumSpins: 20
-  maxExtraSpins: 10
+  minimumSpins: 40
+  maxExtraSpins: 20
   winSeconds: 1
   walletManager: {fileID: 541184318}
   burstAnimator: {fileID: 1885087233}
@@ -2383,20 +2418,6 @@ MonoBehaviour:
   burstDuration: 0.5
   flyDuration: 0.3
   delayBetweenItems: 0.1
---- !u!114 &1885087234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885087227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69366c2bb374a55459fd41d9d8215b35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenuSceneName: MainMenu
-  rouletteSceneName: RouletteScene
 --- !u!1 &1914740183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,3 +2781,4 @@ SceneRoots:
   - {fileID: 1843318349}
   - {fileID: 517075221}
   - {fileID: 1914740186}
+  - {fileID: 1745852513}

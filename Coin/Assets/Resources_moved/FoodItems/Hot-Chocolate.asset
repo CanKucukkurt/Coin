@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: HotChocolate
   itemID: hot-chocolate
-  itemSprite: {fileID: -6709044539391235229, guid: 50e5021999c9ebf4d9a290c9b0ebcc06, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: 50e5021999c9ebf4d9a290c9b0ebcc06
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

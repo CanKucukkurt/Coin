@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: HotDog
   itemID: hot-dog
-  itemSprite: {fileID: 1373307899632109730, guid: ced101a77880cf14786e1a75853a828c, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: ced101a77880cf14786e1a75853a828c
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

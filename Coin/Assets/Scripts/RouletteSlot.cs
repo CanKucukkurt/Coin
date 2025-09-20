@@ -91,12 +91,18 @@ public class RouletteSlot : MonoBehaviour
         }
     }
 
-    public void AssignFood(FoodItem food)
+    public async void AssignFood(FoodItem food)
     {
         assignedFood = food;
 
         if (foodIcon != null && food != null)
         {
+            // Wait for sprite to be loaded if it's not ready yet
+            if (!food.IsSpriteLoaded)
+            {
+                await food.LoadSpriteAsync();
+            }
+
             foodIcon.sprite = food.itemSprite;
             foodIcon.gameObject.SetActive(true);
         }

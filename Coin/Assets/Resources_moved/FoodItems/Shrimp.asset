@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Shrimp
   itemID: shrimp
-  itemSprite: {fileID: 868504884959497903, guid: c711c1df8f32cc24baa77e2240af1987, type: 3}
+  itemSpriteReference:
+    m_AssetGUID: c711c1df8f32cc24baa77e2240af1987
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
