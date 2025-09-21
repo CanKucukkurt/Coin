@@ -76,7 +76,7 @@ public class WalletManager : MonoBehaviour
                 collectedFoods[food] = amount;
             }
         }
-        Debug.Log("Wallet loaded from PlayerPrefs using Addressables.");
+        Debug.Log("Wallet loaded from PlayerPrefs.");
         walletUI.RefreshWalletDisplay();
     }
 

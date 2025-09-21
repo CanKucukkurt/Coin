@@ -28,11 +28,9 @@ public class FoodItemManager : MonoBehaviour
     {
         try
         {
-            // Load all assets with the "FoodItems" label
             var handle = Addressables.LoadAssetsAsync<FoodItem>("FoodItems", null);
             var foodItems = await handle.Task;
 
-            // Cache the loaded items and their sprites
             foreach (var item in foodItems)
             {
                 if (!loadedFoodItems.ContainsKey(item.itemID))

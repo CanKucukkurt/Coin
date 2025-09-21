@@ -66,13 +66,11 @@ public class RouletteSpinManager : MonoBehaviour
             currentHighlightedIndex = (currentHighlightedIndex + 1) % allSlots.Length;
             allSlots[currentHighlightedIndex].SetHighlighted(true);
 
-            // Use slow speed for last 3 spins, regular speed otherwise
             float spinSpeed = (i >= totalSpins - 3) ? slowSpinSpeed : regularSpinSpeed;
 
             yield return new WaitForSeconds(spinSpeed);
         }
 
-        // Continue spinning until we land on a non-disabled slot
         while (allSlots[currentHighlightedIndex].IsDisabled)
         {
             if (currentHighlightedIndex >= 0)

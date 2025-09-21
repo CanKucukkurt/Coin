@@ -2416,8 +2416,10 @@ MonoBehaviour:
   uiCanvas: {fileID: 517075220}
   burstRadius: 0.8
   burstDuration: 0.5
-  flyDuration: 0.3
+  flyDuration: 0.5
   delayBetweenItems: 0.1
+  burstEase: 6
+  flyEase: 26
 --- !u!1 &1914740183
 GameObject:
   m_ObjectHideFlags: 0

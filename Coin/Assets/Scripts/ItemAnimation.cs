@@ -8,8 +8,12 @@ public class ItemAnimation : MonoBehaviour
     [SerializeField] private Canvas uiCanvas;
     [SerializeField] private float burstRadius = 150f;
     [SerializeField] private float burstDuration = 0.5f;
-    [SerializeField] private float flyDuration = 1f;
+    [SerializeField]
+    private float flySpeed = 12f;
     [SerializeField] private float delayBetweenItems = 0.1f;
+    [SerializeField] private Ease burstEase = Ease.OutQuad;
+    [SerializeField] private Ease flyEase = Ease.InQuad;
+
     public void PlayBurstAnimation(FoodItem item, Transform slotTransform)
     {
         Vector2 startPosition = slotTransform.position;
@@ -47,10 +51,12 @@ public class ItemAnimation : MonoBehaviour
         Vector2 circularDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         Vector2 burstTarget = startPosition + circularDirection * burstRadius;
         Vector3 backpackPosition = backpackTarget.position;
+        float flyDistance = Vector2.Distance(burstTarget, backpackPosition);
+        float calculatedFlyDuration = flyDistance / flySpeed;
 
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(rectTransform.DOMove(burstTarget, burstDuration).SetEase(Ease.OutQuad));
-        sequence.Append(rectTransform.DOMove(backpackPosition, flyDuration).SetEase(Ease.InQuad).SetDelay(flightDelay));
+        sequence.Append(rectTransform.DOMove(burstTarget, burstDuration).SetEase(burstEase));
+        sequence.Append(rectTransform.DOMove(backpackPosition, calculatedFlyDuration).SetEase(flyEase).SetDelay(flightDelay));
         sequence.OnComplete(() =>
         {
             backpackTarget.DOKill();
